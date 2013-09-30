@@ -114,6 +114,16 @@ class Phrase::Api::Client
     parsed(result)
   end
 
+  # Returns an array of translations for the 
+  # specified locale.
+  # 
+  # @param [Hash] Options: :updated_since, :locale_name
+  # @return [Array]
+  def translations(opts = {})
+    result = perform_api_request("/translations", :get, opts)
+    parsed(result)
+  end
+
 private
   def extract_structured_object(translation)
     if translation.is_a?(Hash)
