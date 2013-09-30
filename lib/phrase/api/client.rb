@@ -84,6 +84,16 @@ class Phrase::Api::Client
     end
   end
 
+  # Uploads a file to the project. 
+  # 
+  # @param [String] Name of the file (eg. 'en.yml')
+  # @param [String] File content (eg. 'en:\n  foo: bar')
+  # @param [Array] Array of tags (eg. ['foo', 'bar'])
+  # @param [String] Locale (eg. 'en' or 'es-AR')
+  # @param [String] Format (eg. 'yml')
+  # @param [Boolean] Update translations? (Default: false)
+  # @param [Boolean] Skip unverification? (Default: false)
+  # @return [String] See #perform_api_request
   def upload(filename, file_content, tags=[], locale=nil, format=nil, update_translations=false, skip_unverification=false)
     begin
       params = {
@@ -163,6 +173,13 @@ private
     "Error: #{message} (#{response.code})"
   end
 
+  # Performs API request.
+  # 
+  # @param [String] URL
+  # @param [String] HTTP method 
+  # @return [String] Response body
+  # @raise [Phrase::Api::Exceptions::Unauthorized] When response is HTTP401
+  # @raise [Phrase::Api::Exceptions::ServerError] When response is HTTP500
   def perform_api_request(endpoint, method=METHOD_GET, params={})
     request = case method
       when METHOD_GET
