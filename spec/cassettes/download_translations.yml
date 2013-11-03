@@ -2,7 +2,7 @@
 http_interactions:
 - request:
     method: get
-    uri: http://localhost:3000/api/v1/translations/download.yml?auth_token=secret123&locale=en
+    uri: http://localhost:3000/api/v1/translations/download?auth_token=secret123&format=yml&locale=en
     body:
       encoding: US-ASCII
       string: ''
@@ -73,6 +73,6 @@ http_interactions:
         \   'yes': 'Yes'\n    'no': 'No'\n    required:\n      text: required\n      mark:
         ! '*'\n    error_notification:\n      default_message: ! 'Please review the
         problems below:'\n  lorem:\n    ipsum: bar\n  foo: bar\n"
-    http_version: 
+    http_version:
   recorded_at: Fri, 17 Aug 2012 09:24:30 GMT
 recorded_with: VCR 2.2.1

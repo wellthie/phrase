@@ -189,18 +189,6 @@ describe Phrase::Api::Client do
     end
 
     context "locale exists" do
-      before(:all) do
-        begin
-          VCR.turn_off!
-          WebMock.allow_net_connect!
-          subject.create_locale("en")
-        rescue Exception => e
-        ensure
-          VCR.turn_on!
-          WebMock.disable_net_connect!
-        end
-      end
-
       it "should return true" do
         VCR.use_cassette('download translations') do
           subject.download_translations_for_locale("en", "yml").should include "en:"

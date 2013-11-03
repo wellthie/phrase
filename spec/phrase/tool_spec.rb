@@ -348,10 +348,10 @@ describe Phrase::Tool do
         ::FileUtils.rm_rf("ru.lproj")
         ::FileUtils.rm_rf("res")
         ::FileUtils.rm_rf("phrase/locales/")
-        api_client.stub(:download_translations_for_locale).with("pl", kind_of(String), nil).and_return("content for pl")
-        api_client.stub(:download_translations_for_locale).with("ru", kind_of(String), nil).and_return("content for ru")
-        api_client.stub(:download_translations_for_locale).with("de", kind_of(String), nil).and_return("content for de")
-        api_client.stub(:download_translations_for_locale).with("cn", kind_of(String), nil).and_raise("Error")
+        api_client.stub(:download_translations_for_locale).with("pl", kind_of(String), nil, nil, nil).and_return("content for pl")
+        api_client.stub(:download_translations_for_locale).with("ru", kind_of(String), nil, nil, nil).and_return("content for ru")
+        api_client.stub(:download_translations_for_locale).with("de", kind_of(String), nil, nil, nil).and_return("content for de")
+        api_client.stub(:download_translations_for_locale).with("cn", kind_of(String), nil, nil, nil).and_raise("Error")
       end
 
       after(:each) do

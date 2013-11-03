@@ -27,7 +27,9 @@ module Phrase::Tool::Commands
       pull: {
         format: nil,
         target: nil,
-        tag: nil
+        tag: nil,
+        updated_since: nil,
+        include_empty_translations: nil
       },
       tags: {
         list: true

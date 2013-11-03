@@ -42,7 +42,7 @@ describe Phrase::Tool::Commands::Pull do
 
       it "should fetch the given locale" do
         subject.should_receive(:print_message).with(/downloading ru.../i)
-        subject.should_receive(:fetch_translations_for_locale).with(kind_of(Phrase::Tool::Locale), "yml", nil)
+        subject.should_receive(:fetch_translations_for_locale).with(kind_of(Phrase::Tool::Locale), "yml", nil, nil, nil)
         subject.execute!
       end
 
@@ -63,8 +63,8 @@ describe Phrase::Tool::Commands::Pull do
       it "should fetch all locales" do
         subject.should_receive(:print_message).with(/downloading ru.../i)
         subject.should_receive(:print_message).with(/downloading pl.../i)
-        subject.should_receive(:fetch_translations_for_locale).with(russian_locale, "yml", nil)
-        subject.should_receive(:fetch_translations_for_locale).with(polish_locale, "yml", nil)
+        subject.should_receive(:fetch_translations_for_locale).with(russian_locale, "yml", nil, nil, nil)
+        subject.should_receive(:fetch_translations_for_locale).with(polish_locale, "yml", nil, nil, nil)
         subject.execute!
       end
     end
@@ -82,7 +82,7 @@ describe Phrase::Tool::Commands::Pull do
     end
 
     it "fetches translations for a locale" do
-      api_client.should_receive(:download_translations_for_locale).with("pl", "yml", nil)
+      api_client.should_receive(:download_translations_for_locale).with("pl", "yml", nil, nil, nil)
       subject.send(:fetch_translations_for_locale, polish_locale, "yml")
     end
 

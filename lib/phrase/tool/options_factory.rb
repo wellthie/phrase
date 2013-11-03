@@ -88,6 +88,14 @@ class OptionsFactory
       set[:tag] = tag
     end
 
+    opts.on("--updated-since=YYYYMMDDHHMMSS", String, "Limit results to translations updated after the given date (UTC)") do |updated_since|
+      set[:updated_since] = updated_since
+    end
+
+    opts.on("--include-empty-translations", "Include empty translations in the result") do |include_empty_translations|
+      set[:include_empty_translations] = include_empty_translations
+    end
+
     opts.on("--secret=YOUR_AUTH_TOKEN", String, "The Auth Token to use for this operation instead of the saved one (optional)") do |secret|
       set[:secret] = secret
     end
